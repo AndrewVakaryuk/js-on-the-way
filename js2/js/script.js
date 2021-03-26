@@ -14,4 +14,39 @@
 
 'use strict';
 
-// Код возьмите из предыдущего домашнего задания
+const numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели", "");
+//console.log(numberOfFilms);
+
+const personalMovieDB = {
+  count: numberOfFilms,
+  movies: {},
+  actors: {},
+  genre: [],
+  privat: false
+};
+
+for (let i = 0; i < 2; i++) {
+  const lastSeenFilm = prompt("Один из последних просмотренных фильмов?", ""),
+    estimateFilm = +prompt("На сколько оцените его? 1-10", "");
+
+  if (lastSeenFilm != 0 && estimateFilm != 0 && lastSeenFilm != '' && estimateFilm != '' && lastSeenFilm.length < 50) {
+    personalMovieDB.movies[lastSeenFilm] = estimateFilm;
+  } else {
+    console.log('Error');
+    i--;
+  }
+}
+
+ if (personalMovieDB.count < 10) {
+   alert('Просмотрено довольно мало фильмов');
+ } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+   alert('Вы классический зритель');
+ } else if (personalMovieDB.count >= 30) {
+   alert('Вы киноман');
+ } else {
+   alert('Error');
+ }
+
+
+
+console.log(personalMovieDB);
