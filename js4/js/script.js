@@ -57,14 +57,24 @@ const personalMovieDB = {
     }
   },
   writeYourGenres: function () {
-    for (let i = 1; i <= 3; i++) {
-      let genreFav = prompt(`Ваш любимый жанр под номером ${i}`, "comedy, thriller, detective, fantazy");
+    for (let i = 1; i < 2; i++) {
+      // let genreFav = prompt(`Ваш любимый жанр под номером ${i}`, "comedy, thriller, detective, fantazy");
 
-      if (genreFav == 0 || genreFav == '') {
-        let genreFav = prompt(`Вы ввели некорректные данные или не ввели их вовсе. Ваш любимый жанр под номером ${i}`, "comedy, thriller, detective, fantazy");
+      // if (genreFav == 0 || genreFav == '') {
+      //   let genreFav = prompt(`Вы ввели некорректные данные или не ввели их вовсе. Ваш любимый жанр под номером ${i}`, "comedy, thriller, detective, fantazy");
+      //   i--;
+      // } else {
+      //   personalMovieDB.genre[i - 1] = genreFav;
+      // }
+
+      let genres = prompt(`Введите ваши любимые жанры через запятую`).toLowerCase();
+
+      if (genres === '' || genres == null) {
+        console.log('Вы ввели некорректные данные или не ввели их вовсе');
         i--;
       } else {
-        personalMovieDB.genre[i - 1] = genreFav;
+        personalMovieDB.genre = genres.split(', ');
+        personalMovieDB.genre.sort();
       }
     }
     personalMovieDB.genre.forEach((item, i) => {
@@ -80,10 +90,10 @@ const personalMovieDB = {
   }
 };
 
-personalMovieDB.start();
-personalMovieDB.rememberMyFilms();
-personalMovieDB.detectPersonalLevel();
-// personalMovieDB.toggleVisibleMyDB();
-personalMovieDB.showDB(personalMovieDB.privat);
-personalMovieDB.writeYourGenres();
-console.log(personalMovieDB);
+// personalMovieDB.start();
+// personalMovieDB.rememberMyFilms();
+// personalMovieDB.detectPersonalLevel();
+// // personalMovieDB.toggleVisibleMyDB();
+// personalMovieDB.showDB(personalMovieDB.privat);
+// personalMovieDB.writeYourGenres();
+// console.log(personalMovieDB);
